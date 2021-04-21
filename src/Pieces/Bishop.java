@@ -7,13 +7,11 @@ public class Bishop implements Piece {
 	private boolean isWhite;
 	private int row;
 	private int col;
-	private boolean moved;
 
 	public Bishop(Boolean white, int c, int r) {
 		this.isWhite = white;
 		this.row = r;
 		this.col = c;
-		this.moved = false;
 	}
 
 	public boolean isWhite() {
@@ -37,47 +35,61 @@ public class Bishop implements Piece {
 	public boolean isValidMove(int[] pos, Board board) {
 		int c = pos[0];
 		int r = pos[1];
-		if (r == row && c == col)
+		if (r == row && c == col) {
+			System.out.println("Must move piece");
 			return false;
+		}
 		if (r < 0 || r >= 8 || c < 0 || c >= 8) {
+			System.out.println("Cannot move out of bounds");
 			return false;
 		}
 		if (board.isPiece(c, r)) {
 			Piece p = board.getPiece(c, r);
 			if (p.isWhite() == this.isWhite) {
+				System.out.println("Cannot take your own piece");
 				return false;
 			}
 		}
 		if (Math.abs(r - row) != Math.abs(c - col)) {
+			System.out.println("Must move diagonally");
 			return false;
 		} else {
 			if (r < row && c < col) {
-				for (int i = r + 1, j = c + 1; i < row && j < col; i++, j++) {
+				for (int i = row - 1, j = col - 1; i > r || j > c; i--, j--) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r > row && c < col) {
-				for (int i = row + 1, j = c + 1; i < r && j < col; i++, j++) {
+				for (int i = row + 1, j = col - 1; i < r || j > c; i++, j--) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r < row && c > col) {
-				for (int i = r + 1, j = col + 1; i < row && j < c; i++, j++) {
+				for (int i = row - 1, j = col + 1; i > r || j < c; i--, j++) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r > row && c > col) {
-				for (int i = row + 1, j = col + 1; i < r && j < c; i++, j++) {
+				for (int i = row + 1, j = col + 1; i < r || j < c; i++, j++) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			}
 
 		}
+		System.out.println("Something's wrong");
 		return false;
 	}
 

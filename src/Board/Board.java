@@ -70,6 +70,7 @@ public class Board {
 			pieces[c1][r1] = p;
 			pieces[c0][r0] = blank;
 			whiteTurn = !whiteTurn;
+			print();
 			return true;
 		}
 		System.out.println("Invalid Move");

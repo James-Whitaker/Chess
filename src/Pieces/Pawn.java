@@ -67,7 +67,7 @@ public class Pawn implements Piece {
 				System.out.println("Cannot move given distance");
 				return false;
 			} else if (Math.abs(c - col) == 1 && take) {
-				if (row == r - 1) {
+				if (row == r + 1) {
 					return true;
 				}
 			}
@@ -82,7 +82,7 @@ public class Pawn implements Piece {
 				System.out.println("Cannot move given distance");
 				return false;
 			} else if (Math.abs(c - col) == 1 && take) {
-				if (row == r + 1) {
+				if (row == r - 1) {
 					return true;
 				}
 			}
