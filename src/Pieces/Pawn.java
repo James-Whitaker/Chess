@@ -104,8 +104,24 @@ public class Pawn implements Piece {
 		}
 	}
 	
+	
 	@Override
 	public boolean isKing() {
+		return false;
+	}
+	
+	@Override
+	public boolean canPromote() {
+		if(isWhite) {
+			if(row == 0) {
+				return true;
+			}
+		}
+		else {
+			if (row == 7){
+				return true;
+			}
+		}
 		return false;
 	}
 }

@@ -25,4 +25,7 @@ public interface Piece {
 	
 	//used for check
 	public boolean isKing();
+	
+	//used for pawn
+	public boolean canPromote();
 }

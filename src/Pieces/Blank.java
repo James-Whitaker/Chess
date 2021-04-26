@@ -42,5 +42,9 @@ public class Blank implements Piece {
 	public boolean isKing() {
 		return false;
 	}
-
+	
+	@Override
+	public boolean canPromote() {
+		return false;
+	}
 }

@@ -100,4 +100,9 @@ public class Rook implements Piece {
 	public boolean isKing() {
 		return false;
 	}
+	
+	@Override
+	public boolean canPromote() {
+		return false;
+	}
 }

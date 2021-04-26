@@ -50,26 +50,33 @@ public class Queen implements Piece {
 		}
 		if (Math.abs(r - row) == Math.abs(c - col)) {
 			if (r < row && c < col) {
-				for (int i = r + 1, j = c + 1; i < row && j < col; i++, j++) {
+				for (int i = row - 1, j = col - 1; i > r || j > c; i--, j--) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r > row && c < col) {
-				for (int i = row + 1, j = c + 1; i < r && j < col; i++, j++) {
+				for (int i = row + 1, j = col - 1; i < r || j > c; i++, j--) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r < row && c > col) {
-				for (int i = r + 1, j = col + 1; i < row && j < c; i++, j++) {
+				for (int i = row - 1, j = col + 1; i > r || j < c; i--, j++) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
+				return true;
 			} else if (r > row && c > col) {
-				for (int i = row + 1, j = col + 1; i < r && j < c; i++, j++) {
+				for (int i = row + 1, j = col + 1; i < r || j < c; i++, j++) {
 					if (board.isPiece(j, i)) {
+						System.out.println("Cannot jump over pieces");
 						return false;
 					}
 				}
@@ -121,9 +128,14 @@ public class Queen implements Piece {
 			return 'q';
 		}
 	}
-	
+
 	@Override
 	public boolean isKing() {
+		return false;
+	}
+	
+	@Override
+	public boolean canPromote() {
 		return false;
 	}
 }

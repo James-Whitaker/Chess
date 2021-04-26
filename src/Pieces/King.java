@@ -72,4 +72,9 @@ public class King implements Piece {
 	public boolean isKing() {
 		return true;
 	}
+	
+	@Override
+	public boolean canPromote() {
+		return false;
+	}
 }
